@@ -1,0 +1,21 @@
+<ion-content [fullscreen]="true" class="page-content">
+  <main class="mobile-page detail-page">
+    <header class="detail-header"><button (click)="back()"><ion-icon name="arrow-back-outline"></ion-icon></button><h1>{{ product.name }}</h1><button (click)="goCart()"><ion-icon name="cart-outline"></ion-icon></button></header>
+    <img class="hero-image" src="assets/img/product-hero.jpg" alt="Pergamino Especialidad" />
+    <div class="dots"><span class="active"></span><span></span><span></span></div>
+    <small class="category">Café en grano</small>
+    <h2>{{ product.name }}</h2>
+    <div class="review"><span>★★★★★</span><b>{{ product.rating }}</b><small>({{ product.reviews }} reseñas)</small></div>
+    <strong class="price">{{ state.money(price) }}</strong>
+    <p class="description">Café de especialidad de Chiapas, con notas frutales y florales. Un perfil equilibrado, dulce y aromático.</p>
+
+    <h3>Presentación</h3>
+    <div class="presentations"><button *ngFor="let item of presentations" type="button" [class.active]="weight===item.label" (click)="select(item.label,item.price)"><b>{{ item.label }}</b><small>{{ state.money(item.price) }}</small></button></div>
+    <div class="quantity-row"><h3>Cantidad</h3><div class="qty"><button (click)="dec()"><ion-icon name="remove-outline"></ion-icon></button><span>{{ quantity }}</span><button (click)="inc()"><ion-icon name="add-outline"></ion-icon></button></div></div>
+    <h3>Detalles</h3>
+    <section class="details-box"><div><ion-icon name="location-outline"></ion-icon><span>Origen<small>Chiapas, México</small></span></div><div><ion-icon name="leaf-outline"></ion-icon><span>Variedad<small>Arábica</small></span></div><div><ion-icon name="flame-outline"></ion-icon><span>Tueste<small>Medio</small></span></div><p><ion-icon name="leaf-outline"></ion-icon><span>Notas de cata<small>Frutales, florales, dulce, cuerpo medio.</small></span></p></section>
+    <button class="primary-btn add-cart" type="button" (click)="add()"><ion-icon name="cart-outline"></ion-icon>Agregar al carrito</button>
+    <button class="outline-btn" type="button" (click)="buy()">Comprar ahora</button>
+    <app-bottom-nav active="store" [count]="state.cartCount()"></app-bottom-nav>
+  </main>
+</ion-content>
