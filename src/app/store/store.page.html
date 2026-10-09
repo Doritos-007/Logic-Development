@@ -1,0 +1,22 @@
+<ion-content [fullscreen]="true" class="page-content">
+  <main class="mobile-page store-page">
+    <app-brand-header></app-brand-header>
+    <h1 class="screen-title">Tienda</h1>
+    <p class="screen-subtitle">Explora nuestra selección de cafés</p>
+
+    <div class="search-row"><div class="search"><ion-icon name="search-outline"></ion-icon><input [(ngModel)]="query" placeholder="Buscar productos..." /></div><button class="filter"><ion-icon name="options-outline"></ion-icon></button></div>
+    <div class="chips"><button *ngFor="let category of categories" type="button" [class.active]="active===category" (click)="active=category">{{ category }}</button></div>
+    <div class="result-row"><span>12 productos</span><span>Ordenar por: <b>Más populares⌄</b></span></div>
+
+    <div class="product-grid">
+      <article class="store-card" *ngFor="let product of filtered" (click)="open(product)">
+        <img [src]="product.image" [alt]="product.name" />
+        <h2>{{ product.name }}</h2>
+        <strong>{{ state.money(product.price) }}</strong>
+        <div class="rating"><span>★★★★★</span><small>{{ product.rating }} ({{ product.reviews }})</small></div>
+        <button type="button" (click)="add(product,$event)"><ion-icon name="cart-outline"></ion-icon>Agregar</button>
+      </article>
+    </div>
+    <app-bottom-nav active="store" [count]="state.cartCount()"></app-bottom-nav>
+  </main>
+</ion-content>
