@@ -1,0 +1,7 @@
+.angular/
+node_modules/
+www/
+dist/
+android/.gradle/
+android/local.properties
+.DS_Store

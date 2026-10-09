@@ -1,0 +1,11 @@
+<ion-content [fullscreen]="true" class="page-content"><main class="mobile-page address-page">
+<app-brand-header></app-brand-header><h1 class="screen-title">Dirección de entrega</h1><p class="screen-subtitle">Selecciona o agrega una dirección</p>
+<section class="address-options">
+<label class="address-card" [class.selected]="selected==='home'"><input type="radio" name="address" value="home" [(ngModel)]="selected"/><span class="radio"></span><div><h2>Casa <em>Predeterminada</em></h2><p>Juan Pérez García<br/>Calle Primavera 123<br/>Col. Centro, C.P. 29000<br/>Tuxtla Gutiérrez, Chiapas</p></div><button type="button">Editar</button></label>
+<label class="address-card" [class.selected]="selected==='office'"><input type="radio" name="address" value="office" [(ngModel)]="selected"/><span class="radio"></span><div><h2>Oficina</h2><p>Av. Central 456<br/>Col. Moderna, C.P. 29010<br/>Tuxtla Gutiérrez, Chiapas</p></div><button type="button">Editar</button></label>
+</section>
+<button class="add-address" type="button"><ion-icon name="add-outline"></ion-icon>Agregar nueva dirección</button>
+<h2 class="form-title">Nueva dirección</h2>
+<div class="form-grid"><label class="full">Nombre completo<div class="field"><ion-icon name="person-outline"></ion-icon><input [(ngModel)]="form.name"/></div></label><label class="full">Calle y número<div class="field"><ion-icon name="location-outline"></ion-icon><input [(ngModel)]="form.street"/></div></label><label class="full">Colonia<div class="field"><ion-icon name="business-outline"></ion-icon><input [(ngModel)]="form.colony"/></div></label><label>Ciudad<div class="field"><ion-icon name="business-outline"></ion-icon><input [(ngModel)]="form.city"/></div></label><label>Estado<div class="field"><select [(ngModel)]="form.state"><option>Chiapas</option><option>Veracruz</option></select></div></label><label>Código postal<div class="field"><ion-icon name="mail-outline"></ion-icon><input [(ngModel)]="form.zip"/></div></label><label>Teléfono<div class="field"><ion-icon name="call-outline"></ion-icon><input [(ngModel)]="form.phone"/></div></label></div>
+<button class="primary-btn" type="button" (click)="next()">Guardar y continuar</button><app-bottom-nav active="cart" [count]="state.cartCount()"></app-bottom-nav>
+</main></ion-content>

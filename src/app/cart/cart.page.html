@@ -1,0 +1,25 @@
+<ion-content [fullscreen]="true" class="page-content">
+  <main class="mobile-page cart-page">
+    <app-brand-header></app-brand-header>
+    <h1 class="screen-title">Tu carrito</h1>
+    <p class="screen-subtitle">{{ state.cartCount() }} productos</p>
+    <section class="cart-list">
+      <article *ngFor="let item of state.cart" class="cart-item"><img [src]="item.image" [alt]="item.name" />
+        <div class="item-info">
+          <h2>{{ item.name }}</h2><small>{{ item.weight }}</small><strong>{{ state.money(item.unitPrice) }}</strong>
+          <div class="qty"><button (click)="dec(item)"><ion-icon name="remove-outline"></ion-icon></button><span>{{
+              item.quantity }}</span><button (click)="inc(item)"><ion-icon name="add-outline"></ion-icon></button></div>
+        </div><button class="trash" (click)="remove(item)"><ion-icon name="trash-outline"></ion-icon></button>
+      </article>
+    </section>
+    <section class="totals card">
+      <div><span>Subtotal</span><b>{{ state.money(state.subtotal()) }}</b></div>
+      <div><span>Envío estimado <ion-icon name="information-circle-outline"></ion-icon></span><b>{{ state.money(90)
+          }}</b></div>
+      <hr />
+      <div class="total"><strong>Total</strong><b>{{ state.money(state.subtotal()+90) }}</b></div>
+    </section>
+    <button class="primary-btn" type="button" (click)="next()">Continuar compra</button>
+    <app-bottom-nav active="cart" [count]="state.cartCount()"></app-bottom-nav>
+  </main>
+</ion-content>
