@@ -1,0 +1,66 @@
+<ion-content [fullscreen]="true" class="page-content">
+  <main class="mobile-page saved-payments-page">
+    <header class="top-bar">
+      <button type="button" class="back-btn" (click)="goBack()" aria-label="Volver">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </button>
+    </header>
+
+    <h1 class="screen-title">Métodos de pago</h1>
+    <p class="screen-subtitle">Administra tus tarjetas guardadas</p>
+
+    <section class="cards-list">
+      <div class="payment-wrapper card" *ngFor="let card of cards">
+        <!-- Tarjeta visual azul (Predeterminada) -->
+        <ng-container *ngIf="card.isDefault; else standardCard">
+          <div class="visual-card">
+            <span class="brand-visa">{{ card.brand }}</span>
+            <p class="card-number">•••• •••• •••• {{ card.last4 }}</p>
+            <div class="card-footer">
+              <span class="holder">{{ card.holder }}</span>
+              <span class="expiry">{{ card.expiry }}</span>
+            </div>
+          </div>
+          <div class="card-meta">
+            <span class="default-badge">Predeterminada</span>
+          </div>
+        </ng-container>
+
+        <!-- Tarjeta secundaria blanca -->
+        <ng-template #standardCard>
+          <div class="standard-card">
+            <div class="brand-row">
+              <div class="mc-circles" aria-hidden="true">
+                <span class="circle red"></span>
+                <span class="circle orange"></span>
+              </div>
+              <span class="brand-name">{{ card.brand }}</span>
+            </div>
+            <p class="card-number-dark">•••• •••• •••• {{ card.last4 }}</p>
+            <div class="standard-footer">
+              <span class="holder-dark">{{ card.holder }} · Vence {{ card.expiry }}</span>
+              <button type="button" class="delete-btn" (click)="removeCard(card.id)">Eliminar</button>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+    </section>
+
+    <button type="button" class="outline-btn add-card-btn" (click)="goToAddCard()">
+      + Agregar tarjeta
+    </button>
+
+    <div class="security-note">
+      <span class="check-badge">
+        <ion-icon name="checkmark-outline"></ion-icon>
+      </span>
+      <p>Tus datos de pago están protegidos</p>
+    </div>
+
+    <p class="helper-text">
+      Puedes administrar tus tarjetas en cualquier momento desde esta sección.
+    </p>
+
+    <app-bottom-nav active="profile" [count]="state.cartCount()"></app-bottom-nav>
+  </main>
+</ion-content>

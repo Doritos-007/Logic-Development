@@ -1,0 +1,157 @@
+.top-bar {
+  padding: 2px 0 8px;
+}
+
+.back-btn {
+  width: 34px;
+  height: 34px;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font-size: 22px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  padding: 0;
+  margin-left: -8px;
+}
+
+.screen-title {
+  font-size: 24px;
+  letter-spacing: -0.5px;
+}
+
+.screen-subtitle {
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+
+.addresses-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.address-card {
+  padding: 14px 16px;
+  border-radius: 12px;
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.title-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  h2 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--ink);
+  }
+}
+
+.pin-badge {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--cafe-green-soft);
+  color: var(--cafe-green);
+  display: grid;
+  place-items: center;
+  font-size: 17px;
+  flex-shrink: 0;
+}
+
+.default-badge {
+  background: var(--cafe-green-soft);
+  color: var(--cafe-green-dark);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.card-details {
+  p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.45;
+  }
+
+  .street {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .city {
+    color: var(--muted);
+  }
+}
+
+.card-divider {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 12px 0 10px;
+}
+
+.card-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: 0;
+  background: transparent;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 4px 0;
+  cursor: pointer;
+
+  ion-icon {
+    font-size: 16px;
+  }
+
+  &.edit {
+    color: var(--cafe-green);
+  }
+
+  &.delete {
+    color: #e05252;
+  }
+}
+
+.add-address-btn {
+  margin-top: 16px;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+.tip-section {
+  margin-top: 18px;
+
+  h3 {
+    margin: 0 0 4px;
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--ink);
+  }
+
+  p {
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.45;
+    color: var(--muted);
+  }
+}

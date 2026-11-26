@@ -1,0 +1,177 @@
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 0 14px;
+}
+
+.back-btn {
+  width: 34px;
+  height: 34px;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font-size: 22px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  padding: 0;
+}
+
+.top-title {
+  margin: 0;
+  font-size: 19px;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.spacer {
+  width: 34px;
+}
+
+.avatar-section {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 6px 0 14px;
+}
+
+.avatar-wrapper {
+  position: relative;
+  width: 76px;
+  height: 76px;
+  flex-shrink: 0;
+}
+
+.avatar-circle {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #e5e7eb;
+  color: #ffffff;
+  display: grid;
+  place-items: center;
+  font-size: 40px;
+}
+
+.user-summary {
+  h2 {
+    margin: 0 0 2px;
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--ink);
+  }
+
+  p {
+    margin: 0;
+    font-size: 13px;
+    color: var(--muted);
+  }
+}
+
+.divider {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 4px 0 16px;
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.input-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+  transition: border-color 0.2s ease;
+
+  &:focus-within {
+    border-color: var(--cafe-green);
+  }
+}
+
+.field-icon {
+  font-size: 20px;
+  color: var(--muted);
+  flex-shrink: 0;
+}
+
+.field-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  label {
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 2px;
+  }
+
+  input {
+    border: 0;
+    outline: none;
+    background: transparent;
+    color: var(--ink);
+    font-size: 14px;
+    font-weight: 500;
+    padding: 0;
+    width: 100%;
+  }
+}
+
+.section-heading {
+  margin: 8px 0 2px;
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.password-card {
+  min-height: 48px;
+
+  input {
+    flex: 1;
+    border: 0;
+    outline: none;
+    background: transparent;
+    color: var(--ink);
+    font-size: 14px;
+
+    &::placeholder {
+      color: var(--muted);
+    }
+  }
+}
+
+.eye-btn {
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font-size: 19px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  cursor: pointer;
+}
+
+.feedback-msg {
+  margin: 2px 0 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--cafe-green-dark);
+
+  &.error {
+    color: #d93025;
+  }
+}
+
+.save-btn {
+  margin-top: 14px;
+  border-radius: 10px;
+}

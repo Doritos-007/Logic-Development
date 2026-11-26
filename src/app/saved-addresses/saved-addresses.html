@@ -1,0 +1,59 @@
+<ion-content [fullscreen]="true" class="page-content">
+  <main class="mobile-page saved-addresses-page">
+    <!-- Botón regresar -->
+    <header class="top-bar">
+      <button type="button" class="back-btn" (click)="goBack()" aria-label="Volver">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </button>
+    </header>
+
+    <h1 class="screen-title">Mis direcciones</h1>
+    <p class="screen-subtitle">Administra tus direcciones de entrega</p>
+
+    <!-- Lista de direcciones -->
+    <section class="addresses-list">
+      <div class="address-card card" *ngFor="let item of addresses">
+        <div class="card-top">
+          <div class="title-group">
+            <span class="pin-badge">
+              <ion-icon name="location-outline"></ion-icon>
+            </span>
+            <h2>{{ item.label }}</h2>
+          </div>
+          <span class="default-badge" *ngIf="item.isDefault">Predeterminada</span>
+        </div>
+
+        <div class="card-details">
+          <p class="street">{{ item.street }}</p>
+          <p class="city">{{ item.city }}</p>
+        </div>
+
+        <hr class="card-divider" />
+
+        <div class="card-actions">
+          <button type="button" class="action-btn edit" (click)="editAddress(item)">
+            <ion-icon name="create-outline"></ion-icon>
+            <span>Editar</span>
+          </button>
+          <button type="button" class="action-btn delete" (click)="removeAddress(item.id)">
+            <ion-icon name="trash-outline"></ion-icon>
+            <span>Eliminar</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Botón Agregar dirección -->
+    <button type="button" class="outline-btn add-address-btn" (click)="goToAddAddress()">
+      + Agregar dirección
+    </button>
+
+    <!-- Consejo -->
+    <section class="tip-section">
+      <h3>Consejo</h3>
+      <p>Mantén tus direcciones actualizadas para facilitar tus entregas.</p>
+    </section>
+
+    <app-bottom-nav active="profile" [count]="state.cartCount()"></app-bottom-nav>
+  </main>
+</ion-content>

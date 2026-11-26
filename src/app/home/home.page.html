@@ -1,0 +1,45 @@
+<ion-content [fullscreen]="true" class="page-content">
+  <main class="mobile-page home-page">
+    <app-brand-header></app-brand-header>
+
+    <button class="search-bar" type="button" (click)="goStore()">
+      <ion-icon name="search-outline"></ion-icon>
+      <span>Buscar productos, orígenes o sabores...</span>
+    </button>
+
+    <section class="hero">
+      <img src="assets/img/banner-home.jpg" alt="Café de especialidad" />
+      <div class="hero-copy">
+        <h1>Café que<br />cuenta historias</h1>
+        <p>Granos de origen,<br />grandes momentos.</p>
+        <button type="button" (click)="goStore()">Comprar ahora <ion-icon name="arrow-forward-outline"></ion-icon></button>
+      </div>
+      <div class="hero-dots"><span class="active"></span><span></span><span></span><span></span></div>
+    </section>
+
+    <section>
+      <div class="section-head"><h2>Categorías</h2><button type="button" (click)="goStore()">Ver todas <ion-icon name="arrow-forward-outline"></ion-icon></button></div>
+      <div class="category-grid">
+        <button class="category" *ngFor="let category of categories" type="button" (click)="goStore()">
+          <img [src]="category.image" [alt]="category.label" />
+          <span>{{ category.label }}</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="featured-section">
+      <div class="section-head"><h2>Productos destacados</h2><button type="button" (click)="goStore()">Ver todos <ion-icon name="arrow-forward-outline"></ion-icon></button></div>
+      <div class="featured-grid">
+        <article class="product-card" *ngFor="let product of state.products.slice(0,3)" (click)="openProduct(product)">
+          <img [src]="product.image" [alt]="product.name" />
+          <h3>{{ product.name }}</h3>
+          <p>{{ product.subtitle }}</p>
+          <strong>{{ state.money(product.price) }}</strong>
+          <button type="button" (click)="add(product,$event)"><ion-icon name="cart-outline"></ion-icon> Agregar</button>
+        </article>
+      </div>
+    </section>
+
+    <app-bottom-nav active="home" [count]="state.cartCount()"></app-bottom-nav>
+  </main>
+</ion-content>

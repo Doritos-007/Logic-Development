@@ -1,0 +1,90 @@
+{
+  "info": {
+    "name": "Café Cuauhtémoc - APIs (Fake Store & Stripe)",
+    "description": "Colección de pruebas para autenticación con Fake Store API y procesamiento de pagos con Stripe Backend.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Autenticación y Usuarios (Fake Store API)",
+      "item": [
+        {
+          "name": "Login de Usuario (Obtener Token JWT)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"johnd\",\n  \"password\": \"m38rmF$\"\n}"
+            },
+            "url": {
+              "raw": "https://fakestoreapi.com/auth/login",
+              "protocol": "https",
+              "host": ["fakestoreapi", "com"],
+              "path": ["auth", "login"]
+            }
+          }
+        },
+        {
+          "name": "Obtener Todos los Usuarios",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://fakestoreapi.com/users",
+              "protocol": "https",
+              "host": ["fakestoreapi", "com"],
+              "path": ["users"]
+            }
+          }
+        },
+        {
+          "name": "Obtener Perfil de Usuario por ID (johnd = ID 1)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://fakestoreapi.com/users/1",
+              "protocol": "https",
+              "host": ["fakestoreapi", "com"],
+              "path": ["users", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "2. Pagos (Stripe Backend Local)",
+      "item": [
+        {
+          "name": "Crear y Confirmar PaymentIntent (Cobro de Prueba)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amountMxn\": 840,\n  \"paymentMethodId\": \"pm_card_visa\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/create-payment-intent",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["create-payment-intent"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

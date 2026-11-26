@@ -1,0 +1,129 @@
+<ion-content [fullscreen]="true" class="page-content">
+  <main class="mobile-page add-address-page">
+    <!-- Cabecera centrada con botón atrás -->
+    <header class="top-bar">
+      <button type="button" class="back-btn" (click)="goBack()" aria-label="Volver">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </button>
+      <h1 class="top-title">Agregar dirección</h1>
+      <div class="spacer"></div>
+    </header>
+
+    <h2 class="section-main-title">¿Dónde entregamos tu pedido?</h2>
+    <p class="screen-subtitle">Completa los datos de tu domicilio.</p>
+
+    <!-- Vista previa de mapa -->
+    <div class="map-preview">
+      <svg class="map-roads" viewBox="0 0 360 120" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M-10,95 L130,30 L370,75" fill="none" stroke="#dcece3" stroke-width="8" />
+        <path d="M70,-10 L150,130" fill="none" stroke="#dcece3" stroke-width="7" />
+        <path d="M230,-10 L195,130" fill="none" stroke="#dcece3" stroke-width="7" />
+      </svg>
+
+      <div class="map-pin">
+        <ion-icon name="location"></ion-icon>
+      </div>
+
+      <button type="button" class="location-pill" (click)="useCurrentLocation()">
+        Usar mi ubicación actual
+      </button>
+    </div>
+
+    <h3 class="form-section-title">Datos de la dirección</h3>
+
+    <form class="address-form" (ngSubmit)="saveAddress()">
+      <!-- Calle -->
+      <div class="form-group">
+        <label for="street">Calle</label>
+        <input
+          id="street"
+          name="street"
+          type="text"
+          [(ngModel)]="address.street"
+          placeholder="Ej. Avenida Principal"
+        />
+      </div>
+
+      <!-- Número exterior e interior -->
+      <div class="two-cols">
+        <div class="form-group">
+          <label for="extNumber">Número exterior</label>
+          <input
+            id="extNumber"
+            name="extNumber"
+            type="text"
+            [(ngModel)]="address.extNumber"
+            placeholder="Ej. 120"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="intNumber">Número interior</label>
+          <input
+            id="intNumber"
+            name="intNumber"
+            type="text"
+            [(ngModel)]="address.intNumber"
+            placeholder="Ej. 4B (opcional)"
+          />
+        </div>
+      </div>
+
+      <!-- Colonia -->
+      <div class="form-group">
+        <label for="neighborhood">Colonia</label>
+        <input
+          id="neighborhood"
+          name="neighborhood"
+          type="text"
+          [(ngModel)]="address.neighborhood"
+          placeholder="Nombre de la colonia"
+        />
+      </div>
+
+      <!-- Ciudad o municipio y Código postal -->
+      <div class="two-cols">
+        <div class="form-group">
+          <label for="city">Ciudad o municipio</label>
+          <input
+            id="city"
+            name="city"
+            type="text"
+            [(ngModel)]="address.city"
+            placeholder="Ej. Córdoba"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="zipCode">Código postal</label>
+          <input
+            id="zipCode"
+            name="zipCode"
+            type="text"
+            maxlength="5"
+            [(ngModel)]="address.zipCode"
+            placeholder="Ej. 94500"
+          />
+        </div>
+      </div>
+
+      <!-- Referencias -->
+      <div class="form-group">
+        <label for="references">Referencias para llegar (opcional)</label>
+        <textarea
+          id="references"
+          name="references"
+          rows="3"
+          [(ngModel)]="address.references"
+          placeholder="Color de fachada, entre calles, etc."
+        ></textarea>
+      </div>
+
+      <p class="feedback-msg" *ngIf="message" [class.error]="isError">{{ message }}</p>
+
+      <button type="submit" class="primary-btn save-btn">Guardar dirección</button>
+    </form>
+
+    <app-bottom-nav active="profile" [count]="state.cartCount()"></app-bottom-nav>
+  </main>
+</ion-content>

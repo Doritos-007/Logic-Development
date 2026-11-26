@@ -1,0 +1,89 @@
+<ion-content [fullscreen]="true" class="page-content">
+  <main class="mobile-page add-card-page">
+    <!-- Botón regresar -->
+    <header class="top-bar">
+      <button type="button" class="back-btn" (click)="goBack()" aria-label="Volver">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </button>
+    </header>
+
+    <h1 class="screen-title">Agregar tarjeta</h1>
+    <p class="screen-subtitle">Ingresa los datos de tu tarjeta</p>
+
+    <form class="card-form" (ngSubmit)="saveCard()">
+      <!-- Número de tarjeta -->
+      <div class="form-group">
+        <label for="cardNumber">Número de tarjeta</label>
+        <input
+          id="cardNumber"
+          name="cardNumber"
+          type="text"
+          maxlength="19"
+          [(ngModel)]="card.number"
+          placeholder="•••• •••• •••• ••••"
+        />
+      </div>
+
+      <!-- Nombre del titular -->
+      <div class="form-group">
+        <label for="cardHolder">Nombre del titular</label>
+        <input
+          id="cardHolder"
+          name="cardHolder"
+          type="text"
+          [(ngModel)]="card.holder"
+          placeholder="Nombre como aparece en la tarjeta"
+        />
+      </div>
+
+      <!-- Fila Vencimiento y CVV -->
+      <div class="two-cols">
+        <div class="form-group">
+          <label for="cardExpiry">Vencimiento</label>
+          <input
+            id="cardExpiry"
+            name="cardExpiry"
+            type="text"
+            maxlength="5"
+            [(ngModel)]="card.expiry"
+            placeholder="MM/AA"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="cardCvv">CVV</label>
+          <input
+            id="cardCvv"
+            name="cardCvv"
+            type="password"
+            maxlength="4"
+            [(ngModel)]="card.cvv"
+            placeholder="•••"
+          />
+        </div>
+      </div>
+
+      <p class="feedback-msg" *ngIf="message" [class.error]="isError">{{ message }}</p>
+
+      <button type="submit" class="primary-btn save-btn">Guardar tarjeta</button>
+    </form>
+
+    <!-- Nota de protección -->
+    <div class="security-note">
+      <span class="check-badge">
+        <ion-icon name="checkmark-outline"></ion-icon>
+      </span>
+      <p>La información se mostrará protegida.</p>
+    </div>
+
+    <!-- Nota de seguridad -->
+    <section class="security-disclaimer">
+      <h3>Nota de seguridad</h3>
+      <p>
+        En una aplicación real, el guardado debe realizarse mediante un proveedor de pagos seguro. No almacenes el CVV.
+      </p>
+    </section>
+
+    <app-bottom-nav active="profile" [count]="state.cartCount()"></app-bottom-nav>
+  </main>
+</ion-content>

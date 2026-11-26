@@ -1,0 +1,298 @@
+:host {
+  --cafe-green: #00a846;
+  --cafe-green-dark: #009c3f;
+  --ink: #080808;
+  --muted: #667085;
+  --field-border: #cfd6e2;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+}
+
+.register-content {
+  --background: #ffffff;
+}
+
+.register-screen {
+  width: min(100%, 430px);
+  min-height: 100%;
+  margin: 0 auto;
+  padding: calc(20px + env(safe-area-inset-top)) 22px calc(22px + env(safe-area-inset-bottom));
+}
+
+.topbar {
+  display: grid;
+  grid-template-columns: 44px 1fr 44px;
+  align-items: center;
+  min-height: 44px;
+  margin-bottom: 6px;
+}
+
+.topbar h1 {
+  margin: 0;
+  text-align: center;
+  color: var(--ink);
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.back-button {
+  width: 44px;
+  height: 44px;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: #111;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.back-button ion-icon {
+  font-size: 30px;
+}
+
+.brand {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.brand-logo {
+  width: 84px;
+  height: 94px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 3px;
+}
+
+.brand h2 {
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(28px, 7.5vw, 34px);
+  font-weight: 800;
+  letter-spacing: -0.9px;
+  line-height: 1.08;
+}
+
+.brand p {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 16px;
+}
+
+.form-group {
+  margin-bottom: 12px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.input-shell {
+  height: 48px;
+  border: 1px solid var(--field-border);
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 0 14px;
+  background: #fff;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.input-shell:focus-within {
+  border-color: var(--cafe-green);
+  box-shadow: 0 0 0 3px rgba(0, 168, 70, 0.08);
+}
+
+.input-shell.invalid {
+  border-color: #c63b3b;
+}
+
+.input-shell ion-icon {
+  color: #667085;
+  font-size: 22px;
+  min-width: 22px;
+}
+
+.input-shell input {
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #344054;
+  font-size: 15px;
+  font-family: inherit;
+}
+
+.input-shell input::placeholder {
+  color: #46536d;
+  opacity: 1;
+}
+
+.icon-button {
+  width: 36px;
+  height: 36px;
+  flex: 0 0 36px;
+  border: 0;
+  background: transparent;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  cursor: pointer;
+}
+
+.icon-button ion-icon {
+  font-size: 24px;
+}
+
+.error {
+  display: block;
+  color: #b42318;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.terms-row {
+  display: grid;
+  grid-template-columns: 26px 1fr;
+  gap: 10px;
+  align-items: start;
+  margin: 16px 4px 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.35;
+  cursor: pointer;
+  position: relative;
+}
+
+.terms-row input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.custom-check {
+  width: 26px;
+  height: 26px;
+  border-radius: 5px;
+  border: 1.5px solid #b9c0ca;
+  display: grid;
+  place-items: center;
+  background: #fff;
+  color: transparent;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.terms-row input:checked + .custom-check {
+  background: var(--cafe-green);
+  border-color: var(--cafe-green);
+  color: #fff;
+}
+
+.custom-check ion-icon {
+  font-size: 20px;
+  stroke-width: 3px;
+}
+
+.terms-row a {
+  color: var(--cafe-green);
+  text-decoration: underline;
+}
+
+.terms-error {
+  margin-left: 40px;
+}
+
+.primary-button {
+  width: 100%;
+  height: 50px;
+  margin-top: 18px;
+  border: 1px solid var(--cafe-green);
+  border-radius: 7px;
+  background: var(--cafe-green);
+  color: #fff;
+  font-family: inherit;
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.primary-button:active {
+  background: var(--cafe-green-dark);
+}
+
+.login-link {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  flex-wrap: wrap;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.login-link button {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: var(--cafe-green);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+@media (max-height: 780px) {
+  .register-screen {
+    padding-top: calc(8px + env(safe-area-inset-top));
+  }
+
+  .brand {
+    margin-bottom: 12px;
+  }
+
+  .brand-logo {
+    width: 66px;
+    height: 72px;
+  }
+
+  .brand h2 {
+    font-size: 27px;
+  }
+
+  .form-group {
+    margin-bottom: 8px;
+  }
+
+  .input-shell {
+    height: 43px;
+  }
+
+  .terms-row {
+    margin-top: 10px;
+  }
+
+  .primary-button {
+    margin-top: 12px;
+    height: 46px;
+  }
+
+  .login-link {
+    margin-top: 12px;
+  }
+}
+
+.status-message {
+  margin: 12px 0 0;
+  padding: 10px 12px;
+  border-radius: 7px;
+  background: rgba(0, 168, 70, 0.08);
+  color: #087234;
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.35;
+}

@@ -1,0 +1,29 @@
+<ion-content [fullscreen]="true" class="page-content">
+    <main class="mobile-page profile-page"><app-brand-header></app-brand-header>
+        <h1 class="screen-title">Mi perfil</h1>
+        <p class="screen-subtitle">Tu cuenta, tus pedidos, tu café.</p>
+        <section class="user-card card">
+            <div class="avatar-circle">
+                <ion-icon name="person"></ion-icon>
+            </div>
+            <div>
+                <h2>{{ state.currentUser.fullName }}</h2>
+                <p>{{ state.currentUser.email }}</p>
+                <button type="button" (click)="editProfile()"><ion-icon name="pencil-outline"></ion-icon>Editar perfil</button>
+            </div>
+        </section>
+        <section class="profile-menu">
+            <button class="menu-item card" *ngFor="let item of menu" (click)="open(item)">
+                <ion-icon [name]="item.icon"></ion-icon>
+                <span><b>{{ item.title }}</b><small>{{ item.sub }}</small></span>
+                <ion-icon name="chevron-forward-outline"></ion-icon>
+            </button>
+            <button class="menu-item card logout" (click)="logout()">
+                <ion-icon name="log-out-outline"></ion-icon>
+                <span><b>Cerrar sesión</b></span>
+            </button>
+        </section>
+        <p class="message" *ngIf="message">{{ message }}</p>
+        <app-bottom-nav active="profile" [count]="state.cartCount()"></app-bottom-nav>
+    </main>
+</ion-content>

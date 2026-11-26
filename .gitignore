@@ -1,0 +1,17 @@
+.angular/
+node_modules/
+www/
+dist/
+android/.gradle/
+android/local.properties
+.DS_Store
+
+stripe-backend/
+node_modules/
+.angular/
+www/
+
+stripe-backend/
+node_modules/
+.angular/
+www/

@@ -1,0 +1,92 @@
+<ion-content [fullscreen]="true" class="page-content">
+  <main class="mobile-page edit-profile-page">
+    <!-- Cabecera con botón atrás y título centrado -->
+    <header class="top-bar">
+      <button type="button" class="back-btn" (click)="goBack()" aria-label="Volver">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </button>
+      <h1 class="top-title">Editar perfil</h1>
+      <div class="spacer"></div>
+    </header>
+
+    <!-- Sección del avatar sin botón de editar -->
+    <section class="avatar-section">
+      <div class="avatar-wrapper">
+        <div class="avatar-circle">
+          <ion-icon name="person"></ion-icon>
+        </div>
+      </div>
+      <div class="user-summary">
+        <h2>{{ user.name || 'Usuario' }}</h2>
+        <p>{{ user.email || 'usuario@ejemplo.com' }}</p>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- Formulario de datos -->
+    <form class="edit-form" (ngSubmit)="saveChanges()">
+      <!-- Nombre -->
+      <div class="input-card">
+        <ion-icon name="person-outline" class="field-icon"></ion-icon>
+        <div class="field-body">
+          <label for="name">Nombre</label>
+          <input id="name" name="name" type="text" [(ngModel)]="user.name" placeholder="Usuario" />
+        </div>
+      </div>
+
+      <!-- Correo electrónico -->
+      <div class="input-card">
+        <ion-icon name="mail-outline" class="field-icon"></ion-icon>
+        <div class="field-body">
+          <label for="email">Correo electrónico</label>
+          <input id="email" name="email" type="email" [(ngModel)]="user.email" placeholder="usuario@ejemplo.com" />
+        </div>
+      </div>
+
+      <!-- Teléfono -->
+      <div class="input-card">
+        <ion-icon name="call-outline" class="field-icon"></ion-icon>
+        <div class="field-body">
+          <label for="phone">Teléfono</label>
+          <input id="phone" name="phone" type="tel" [(ngModel)]="user.phone" placeholder="+52 271 000 0000" />
+        </div>
+      </div>
+
+      <!-- Sección Cambiar contraseña -->
+      <h3 class="section-heading">Cambiar contraseña</h3>
+
+      <div class="input-card password-card">
+        <ion-icon name="lock-closed-outline" class="field-icon"></ion-icon>
+        <input
+          name="newPassword"
+          [type]="showNewPass ? 'text' : 'password'"
+          [(ngModel)]="passwords.newPassword"
+          placeholder="Nueva contraseña"
+        />
+        <button type="button" class="eye-btn" (click)="showNewPass = !showNewPass">
+          <ion-icon [name]="showNewPass ? 'eye-outline' : 'eye-off-outline'"></ion-icon>
+        </button>
+      </div>
+
+      <div class="input-card password-card">
+        <ion-icon name="lock-closed-outline" class="field-icon"></ion-icon>
+        <input
+          name="confirmPassword"
+          [type]="showConfirmPass ? 'text' : 'password'"
+          [(ngModel)]="passwords.confirmPassword"
+          placeholder="Confirmar contraseña"
+        />
+        <button type="button" class="eye-btn" (click)="showConfirmPass = !showConfirmPass">
+          <ion-icon [name]="showConfirmPass ? 'eye-outline' : 'eye-off-outline'"></ion-icon>
+        </button>
+      </div>
+
+      <p class="feedback-msg" *ngIf="message" [class.error]="isError">{{ message }}</p>
+
+      <button type="submit" class="primary-btn save-btn">Guardar cambios</button>
+    </form>
+
+    <app-bottom-nav active="profile" [count]="state.cartCount()"></app-bottom-nav>
+  </main>
+</ion-content>

@@ -1,0 +1,64 @@
+<ion-content [fullscreen]="true" class="page-content">
+  <main class="mobile-page payment-page">
+    <app-brand-header></app-brand-header>
+    <h1 class="screen-title">Pago</h1>
+    <p class="screen-subtitle">Elige un método de pago seguro</p>
+    <app-checkout-steps [active]="3"></app-checkout-steps>
+
+    <div class="payment-tabs">
+      <button [class.active]="state.selectedPayment==='card'" (click)="selectPayment('card')">
+        <ion-icon name="card-outline"></ion-icon>
+        <span>Tarjeta de<br />crédito/débito</span>
+      </button>
+      <button [class.active]="state.selectedPayment==='spei'" (click)="selectPayment('spei')">
+        <ion-icon name="business-outline"></ion-icon>
+        <span>Transferencia<br />SPEI</span>
+      </button>
+      <button [class.active]="state.selectedPayment==='cash'" (click)="selectPayment('cash')">
+        <ion-icon name="cash-outline"></ion-icon>
+        <span>Pago contra<br />entrega</span>
+      </button>
+    </div>
+
+    <section *ngIf="state.selectedPayment==='card'" class="card-fields">
+      <h2>Datos de la tarjeta (Stripe)</h2>
+      <label>Nombre del titular
+        <input [(ngModel)]="cardName" placeholder="Nombre como aparece en la tarjeta" />
+      </label>
+
+      <label>Información de tarjeta segura
+        <div id="stripe-card-element" style="padding: 14px 12px; border: 1px solid #d1d5db; border-radius: 10px; background: #fff; margin-top: 6px;"></div>
+      </label>
+
+      <small *ngIf="stripeError" style="color: #dc2626; display: block; margin-top: 6px;">
+        {{ stripeError }}
+      </small>
+
+      <label class="check">
+        <input type="checkbox" [(ngModel)]="saveCard" />
+        <span>✓</span>Guardar esta tarjeta para futuras compras
+      </label>
+
+      <h2>Dirección de facturación</h2>
+      <label class="radio-row">
+        <input type="radio" name="bill" value="same" [(ngModel)]="billing" />
+        <span></span>Usar mi dirección de entrega
+      </label>
+      <label class="radio-row">
+        <input type="radio" name="bill" value="other" [(ngModel)]="billing" />
+        <span></span>Usar una dirección diferente
+      </label>
+    </section>
+
+    <section *ngIf="state.selectedPayment!=='card'" class="alt-payment card">
+      <h2>{{ state.selectedPayment==='spei' ? 'Transferencia SPEI' : 'Pago contra entrega' }}</h2>
+      <p>{{ state.selectedPayment==='spei' ? 'Al confirmar el pedido recibirás los datos bancarios para realizar tu transferencia.' : 'Paga cuando recibas tu pedido. Verifica disponibilidad en tu zona.' }}</p>
+    </section>
+
+    <button class="primary-btn" [disabled]="processing" (click)="next()">
+      {{ processing ? 'Validando con Stripe...' : 'Continuar' }}
+    </button>
+
+    <app-bottom-nav active="cart" [count]="state.cartCount()"></app-bottom-nav>
+  </main>
+</ion-content>

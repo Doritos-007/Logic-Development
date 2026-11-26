@@ -1,0 +1,76 @@
+<ion-content [fullscreen]="true" class="page-content">
+  <main class="mobile-page support-page">
+    <!-- Botón regresar -->
+    <header class="top-bar">
+      <button type="button" class="back-btn" (click)="goBack()" aria-label="Volver">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </button>
+    </header>
+
+    <h1 class="screen-title">Ayuda y soporte</h1>
+    <p class="screen-subtitle">Estamos para ayudarte</p>
+
+    <!-- Tarjetas de contacto -->
+    <section class="support-cards">
+      <!-- Atención telefónica -->
+      <div class="contact-card card">
+        <div class="card-header">
+          <span class="icon-badge">
+            <ion-icon name="call-outline"></ion-icon>
+          </span>
+          <div>
+            <h2>Atención telefónica</h2>
+            <p>Llámanos para recibir ayuda</p>
+          </div>
+        </div>
+
+        <div class="contact-footer">
+          <div class="contact-info">
+            <span class="label">Teléfono de la empresa</span>
+            <strong class="value">(271) 000 0000</strong>
+          </div>
+          <a href="tel:2710000000" class="action-pill-btn">Llamar</a>
+        </div>
+      </div>
+
+      <!-- WhatsApp -->
+      <div class="contact-card card">
+        <div class="card-header">
+          <span class="icon-badge">
+            <ion-icon name="logo-whatsapp"></ion-icon>
+          </span>
+          <div>
+            <h2>WhatsApp</h2>
+            <p>Escríbenos directamente</p>
+          </div>
+        </div>
+
+        <div class="contact-footer">
+          <div class="contact-info">
+            <span class="label">WhatsApp de la empresa</span>
+            <strong class="value">+52 271 000 0000</strong>
+          </div>
+          <a
+            href="https://wa.me/522710000000"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="action-pill-btn"
+          >
+            Enviar mensaje
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Horario de atención -->
+    <section class="schedule-section">
+      <h3>Horario de atención</h3>
+      <div class="schedule-card card">
+        <strong>Lunes a sábado</strong>
+        <p>9:00 a. m. – 6:00 p. m.</p>
+      </div>
+    </section>
+
+    <app-bottom-nav active="profile" [count]="state.cartCount()"></app-bottom-nav>
+  </main>
+</ion-content>

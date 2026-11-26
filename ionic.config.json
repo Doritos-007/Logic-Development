@@ -1,0 +1,7 @@
+{
+  "name": "cafe-cuauhtemoc-mobile-completo",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

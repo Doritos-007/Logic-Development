@@ -1,0 +1,82 @@
+<ion-content [fullscreen]="true" class="page-content">
+    <main class="mobile-page tracking-page">
+        <app-brand-header [back]="true"></app-brand-header>
+        <h1 class="screen-title">Seguimiento de pedido</h1>
+        <p class="screen-subtitle">Conoce el estado de tu pedido en tiempo real.</p>
+
+        <section class="order-summary card">
+            <img src="assets/img/product-pergamino.png" />
+            <div>
+                <h2>#CCU-2026-0876</h2>
+                <small>Realizado el 12 nov 2026</small>
+                <p>2 productos · $840 MXN</p>
+            </div>
+            <span>En camino</span>
+        </section>
+
+        <section class="timeline">
+            <div class="stage done">
+                <i><ion-icon name="checkmark"></ion-icon></i>
+                <div>
+                    <h3>Pedido recibido</h3>
+                    <small>12 nov 2026 · 10:24</small>
+                    <p>Hemos recibido tu pedido<br />correctamente.</p>
+                </div>
+            </div>
+            <div class="stage done">
+                <i><ion-icon name="checkmark"></ion-icon></i>
+                <div>
+                    <h3>Preparando</h3>
+                    <small>12 nov 2026 · 14:30</small>
+                    <p>Estamos preparando tu café<br />con todo el cuidado.</p>
+                </div>
+            </div>
+            <div class="stage current">
+                <i></i>
+                <div>
+                    <h3>Enviado</h3>
+                    <small>13 nov 2026 · 09:15</small>
+                    <p>Tu pedido ya está en camino.<br />En breve estará contigo.</p>
+                </div>
+            </div>
+            <div class="stage">
+                <i></i>
+                <div>
+                    <h3>Entregado</h3>
+                    <small>Estimado: 15 nov 2026</small>
+                    <p>Tu pedido será entregado<br />en la dirección indicada.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="delivery-info">
+            <header>
+                <h2>Información de entrega</h2>
+                <button type="button" (click)="editAddress()">Editar</button>
+            </header>
+            <div>
+                <ion-icon name="location-outline"></ion-icon>
+                <p>
+                    <b>{{ state.getCurrentAddress().name }}</b><br />
+                    {{ state.getCurrentAddress().street }}<br />
+                    {{ state.getCurrentAddress().colony }}, C.P. {{ state.getCurrentAddress().zip }}<br />
+                    {{ state.getCurrentAddress().city }}, {{ state.getCurrentAddress().state }}
+                </p>
+            </div>
+            <div>
+                <ion-icon name="car-outline"></ion-icon>
+                <p>
+                    <b>Entrega estimada</b><br />
+                    {{ state.selectedDelivery === 'express' ? '1–2 días hábiles' : state.selectedDelivery === 'pickup' ? '1 día hábil' : '3–5 días hábiles' }}
+                </p>
+            </div>
+        </section>
+
+        <div class="impact">
+            <ion-icon name="leaf-outline"></ion-icon>
+            <span>Tu café viaja desde el origen<br />hasta tu hogar. Gracias por apoyar<br />a productores locales.</span>
+        </div>
+
+        <app-bottom-nav active="profile" [count]="state.cartCount()"></app-bottom-nav>
+    </main>
+</ion-content>

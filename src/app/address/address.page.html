@@ -1,0 +1,88 @@
+<ion-content [fullscreen]="true" class="page-content">
+    <main class="mobile-page address-page">
+        <app-brand-header></app-brand-header>
+        <h1 class="screen-title">Dirección de entrega</h1>
+        <p class="screen-subtitle">Selecciona o agrega una dirección</p>
+
+        <section class="address-options">
+            <label class="address-card" *ngFor="let item of addresses" [class.selected]="selected === item.id">
+                <input type="radio" name="address" [value]="item.id" [(ngModel)]="selected" />
+                <span class="radio"></span>
+                <div>
+                    <h2>{{ item.label }} <em *ngIf="item.isDefault">Predeterminada</em></h2>
+                    <p>
+                        <ng-container *ngIf="item.name">{{ item.name }}<br /></ng-container>
+                        {{ item.street }}<br />
+                        {{ item.colony }}, C.P. {{ item.zip }}<br />
+                        {{ item.city }}, {{ item.state }}
+                    </p>
+                </div>
+                <button type="button" (click)="editAddress(item, $event)">Editar</button>
+            </label>
+        </section>
+
+        <button class="add-address" type="button" (click)="startNewAddress()">
+            <ion-icon name="add-outline"></ion-icon>Agregar nueva dirección
+        </button>
+
+        <h2 class="form-title" id="addressFormTitle">
+            {{ editingId ? 'Editar dirección (' + editingLabel + ')' : 'Nueva dirección' }}
+        </h2>
+
+        <div class="form-grid">
+            <label class="full">Nombre completo
+                <div class="field">
+                    <ion-icon name="person-outline"></ion-icon>
+                    <input [(ngModel)]="form.name" placeholder="Ej. Juan Pérez García" />
+                </div>
+            </label>
+
+            <label class="full">Calle y número
+                <div class="field">
+                    <ion-icon name="location-outline"></ion-icon>
+                    <input [(ngModel)]="form.street" placeholder="Ej. Calle Primavera 123" />
+                </div>
+            </label>
+
+            <label class="full">Colonia
+                <div class="field">
+                    <ion-icon name="business-outline"></ion-icon>
+                    <input [(ngModel)]="form.colony" placeholder="Ej. Col. Centro" />
+                </div>
+            </label>
+
+            <label>Ciudad
+                <div class="field">
+                    <ion-icon name="business-outline"></ion-icon>
+                    <input [(ngModel)]="form.city" placeholder="Ej. Córdoba" />
+                </div>
+            </label>
+
+            <label>Estado
+                <div class="field">
+                    <select [(ngModel)]="form.state">
+                        <option value="Chiapas">Chiapas</option>
+                        <option value="Veracruz">Veracruz</option>
+                    </select>
+                </div>
+            </label>
+
+            <label>Código postal
+                <div class="field">
+                    <ion-icon name="mail-outline"></ion-icon>
+                    <input [(ngModel)]="form.zip" placeholder="Ej. 29000" />
+                </div>
+            </label>
+
+            <label>Teléfono
+                <div class="field">
+                    <ion-icon name="call-outline"></ion-icon>
+                    <input [(ngModel)]="form.phone" placeholder="Ej. +52 961 234 5678" />
+                </div>
+            </label>
+        </div>
+
+        <button class="primary-btn" type="button" (click)="next()">Guardar y continuar</button>
+        <app-bottom-nav active="cart" [count]="state.cartCount()"></app-bottom-nav>
+    </main>
+</ion-content>
